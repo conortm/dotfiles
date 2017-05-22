@@ -1,0 +1,56 @@
+[user]
+	name = Conor McNamara
+	email = conortm@gmail.com
+	initials = CM
+[github]
+	user = conortm
+
+[alias]
+	a = add
+	b = branch -v
+	bav = branch -av
+	cp = cherry-pick
+	cpx = cherry-pick -x
+	ci = commit
+	co = checkout
+	cob = checkout -b
+	cot = checkout --track
+	d = diff
+	dc = diff --cached
+	f = fetch
+	fa = fetch --all -p
+	l = log --oneline --decorate
+	# l = !git log --pretty=format:'%C(yellow)%h|%Cred%ad|%Cblue%an|%Cgreen%d %Creset%s' --date=iso $1 | column -ts'|' | less
+	last = log -1 HEAD
+	lg = log --oneline --graph --decorate
+	lo = log --oneline --no-merges
+	lrp = log --first-parent --pretty=format:'* %s | %b'
+	lrc = log --no-merges --pretty=format:'* %h | %s %b [%an]'
+	m = merge
+	mf = merge --ff-only
+	oldest-ancestor = !zsh -c 'diff --old-line-format='' --new-line-format='' <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | head -1' -
+;	pr = !git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1
+;	pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+	pullify = !git config --add remote.${1:-origin}.fetch +refs/pull/*/head:refs/remotes/${1:-origin}/pr/* && :
+	r = remote -v
+	s = status -sb
+	st = status
+	t = tag
+;	HUB!
+	pr = pull-request
+
+[branch]
+	autosetuprebase = always
+
+[color]
+	ui = true
+
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+
+[credential]
+	helper = osxkeychain
+
+[push]
+	default = simple
