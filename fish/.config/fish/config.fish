@@ -2,6 +2,10 @@
 
 set -g default_user cmcnamara
 
+# On startup, write out everything installed via Homebrew:
+brew list > ~/Dropbox/dotfiles/brew/brew-list.txt
+brew cask list > ~/Dropbox/dotfiles/brew/brew-cask-list.txt
+
 # Update path
 set -gx PATH (yarn global bin) $PATH
 
@@ -18,6 +22,6 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 
 # Go
-set GOROOT /usr/local/opt/go/libexec
-set GOPATH $HOME/workspace/golang
-set -gx PATH $PATH $GOPATH/bin $GOROOT/bin
+set -xg GOROOT /usr/local/opt/go/libexec $GOROOT
+set -xg GOPATH $HOME/workspace/golang $GOPATH
+set -xg PATH $GOPATH/bin $GOROOT/bin $PATH
