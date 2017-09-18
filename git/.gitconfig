@@ -2,9 +2,9 @@
 	name = Conor McNamara
 	email = conortm@gmail.com
 	initials = CM
+	signingkey = D97D3DD7935FDAAE
 [github]
 	user = conortm
-
 [alias]
 	a = add
 	b = branch -v
@@ -38,19 +38,16 @@
 	t = tag
 ;	HUB!
 	pr = pull-request
-
 [branch]
 	autosetuprebase = always
-
 [color]
 	ui = true
-
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
-
 [credential]
 	helper = osxkeychain
-
 [push]
 	default = simple
+[commit]
+	gpgsign = true
