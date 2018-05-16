@@ -1,10 +1,3 @@
-[user]
-	name = Conor McNamara
-	email = conortm@gmail.com
-	initials = CM
-	signingkey = D97D3DD7935FDAAE
-[github]
-	user = conortm
 [alias]
 	a = add
 	b = branch -v
@@ -17,37 +10,66 @@
 	cot = checkout --track
 	d = diff
 	dc = diff --cached
+	# Remove branches that have already been merged with master
+	# a.k.a. ‘delete merged’
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d; git remote -v update -p"
 	f = fetch
 	fa = fetch --all -p
-	l = log --oneline --decorate
-	# l = !git log --pretty=format:'%C(yellow)%h|%Cred%ad|%Cblue%an|%Cgreen%d %Creset%s' --date=iso $1 | column -ts'|' | less
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 	last = log -1 HEAD
-	lg = log --oneline --graph --decorate
-	lo = log --oneline --no-merges
-	lrp = log --first-parent --pretty=format:'* %s | %b'
-	lrc = log --no-merges --pretty=format:'* %h | %s %b [%an]'
+	lg = log --color --decorate --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an (%G?)>%Creset' --abbrev-commit
 	m = merge
 	mf = merge --ff-only
-	oldest-ancestor = !zsh -c 'diff --old-line-format='' --new-line-format='' <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | head -1' -
-;	pr = !git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1
-;	pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
-	pullify = !git config --add remote.${1:-origin}.fetch +refs/pull/*/head:refs/remotes/${1:-origin}/pr/* && :
-	r = remote -v
 	s = status -sb
 	st = status
 	t = tag
-;	HUB!
-	pr = pull-request
+	# Show verbose output about tags, branches or remotes
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
 [branch]
 	autosetuprebase = always
 [color]
 	ui = true
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold # line info
+	old = red # deletions
+	new = green # additions
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[commit]
+	gpgsign = true
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
 [credential]
 	helper = osxkeychain
+[diff]
+	# Detect copies as well as renames
+	renames = copies
+[github]
+	user = conortm
+[help]
+	# Automatically correct and execute mistyped commands
+	autocorrect = 1
+[merge]
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
 [push]
+	# change to maching for machines with older versions of git 1.x.x
 	default = simple
-[commit]
-	gpgsign = true
+[user]
+	name = Conor McNamara
+	email = conortm@gmail.com
+	initials = CM
+	signingkey = D97D3DD7935FDAAE
