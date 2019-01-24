@@ -17,8 +17,8 @@ for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
 done
 
 # Linux specific aliases
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+# alias pbcopy='xclip -selection clipboard'
+# alias pbpaste='xclip -selection clipboard -o'
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
@@ -43,15 +43,15 @@ fi
 
 # List all files colorized in long format
 # shellcheck disable=SC2139
-alias l="ls -lF ${colorflag}"
+alias l="ls -lhF ${colorflag}"
 
 # List all files colorized in long format, including dot files
 # shellcheck disable=SC2139
-alias la="ls -laF ${colorflag}"
+alias la="ls -lahF ${colorflag}"
 
 # List only directories
 # shellcheck disable=SC2139
-alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+alias lsd="ls -lhF ${colorflag} | grep --color=never '^d'"
 
 # Always use color output for `ls`
 # shellcheck disable=SC2139
@@ -140,11 +140,11 @@ alias untar='tar xvf'
 alias dotfiles="code ~/.dotfiles"
 
 # Homebrew
-alias brewu="brew update && brew upgrade && brew cleanup && brew prune && brew doctor"
+alias brewu="brew update && brew upgrade && brew doctor && brew cleanup -vs --prune=30"
 
 # Docker
 alias doc=docker
 alias docc=docker-compose
 
 # Misc
-alias ll="ls -laF ${colorflag}"
+alias ll="ls -lahF ${colorflag}"

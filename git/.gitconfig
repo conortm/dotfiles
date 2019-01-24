@@ -52,6 +52,8 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
+	# https://www.git-tower.com/blog/make-git-rebase-safe-on-osx
+	trustctime = false
 [credential]
 	helper = osxkeychain
 [diff]
