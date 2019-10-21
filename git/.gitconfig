@@ -1,3 +1,8 @@
+[user]
+	name = Conor McNamara
+	email = conortm@gmail.com
+	initials = CM
+	signingkey = D97D3DD7935FDAAE
 [alias]
 	a = add
 	b = branch -v
@@ -57,8 +62,3 @@
 [push]
 	# change to maching for machines with older versions of git 1.x.x
 	default = simple
-[user]
-	name = Conor McNamara
-	email = conortm@gmail.com
-	initials = CM
-	signingkey = D97D3DD7935FDAAE

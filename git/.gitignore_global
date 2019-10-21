@@ -33,6 +33,7 @@ Temporary Items
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+*.code-workspace
 
 # https://github.com/github/gitignore/blob/master/Global/Xcode.gitignore
 # Xcode
@@ -58,6 +59,9 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+
+## Gcc Patch
+/*.gcno
 
 # https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
@@ -93,6 +97,8 @@ DerivedData/
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
+# *.iml
+# *.ipr
 
 # CMake
 cmake-build-*/
