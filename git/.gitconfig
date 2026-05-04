@@ -47,7 +47,7 @@
 	# https://www.git-tower.com/blog/make-git-rebase-safe-on-osx
 	trustctime = false
 [credential]
-	helper = osxkeychain
+	# helper = osxkeychain
 [diff]
 	# Detect copies as well as renames
 	renames = copies

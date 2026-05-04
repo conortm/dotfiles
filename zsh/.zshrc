@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/conortm/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -70,7 +70,9 @@ ZSH_THEME="simple"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(docker git tmux)
 
-source $ZSH/oh-my-zsh.sh
+if [ -f "$ZSH/oh-my-zsh.sh" ]; then
+  source $ZSH/oh-my-zsh.sh
+fi
 
 # User configuration
 
@@ -104,17 +106,21 @@ source $ZSH/oh-my-zsh.sh
 alias dotfiles="code ~/.dotfiles"
 
 # Homebrew
-export PATH="/usr/local/sbin:${PATH}"
-export BREW_PREFIX="$(brew --prefix)"
-alias brewu="brew update && brew upgrade && brew doctor && brew cleanup -vs --prune=30"
+if command -v brew &> /dev/null; then
+  export PATH="/usr/local/sbin:${PATH}"
+  export BREW_PREFIX="$(brew --prefix)"
+  alias brewu="brew update && brew upgrade && brew doctor && brew cleanup -vs --prune=30"
+fi
 
 # Vim
 export EDITOR=vim
 
 # Go
-export GOROOT="/usr/local/opt/go/libexec"
-export GOPATH="${HOME}/.go"
-export PATH=${PATH}:${GOPATH}/bin:${GOROOT}/bin
+if [ -d "/usr/local/opt/go/libexec" ]; then
+  export GOROOT="/usr/local/opt/go/libexec"
+  export GOPATH="${HOME}/.go"
+  export PATH=${PATH}:${GOPATH}/bin:${GOROOT}/bin
+fi
 
 # GPG
 export GPG_TTY=$(tty)
@@ -125,9 +131,29 @@ export GPG_TTY=$(tty)
 # test -d "${GCLOUD_SDK_PREFIX}" && source "${GCLOUD_SDK_PREFIX}/latest/google-cloud-sdk/completion.bash.inc"
 
 # Kube
-source <(kubectl completion zsh)
+if command -v kubectl &> /dev/null; then
+  source <(kubectl completion zsh)
+fi
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+if [ -s "$HOME/.nvm/nvm.sh" ]; then
+  . "$HOME/.nvm/nvm.sh" # This loads nvm
+elif [ -s "/usr/local/opt/nvm/nvm.sh" ]; then
+  . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+fi
 #   [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+# AI Agentic Tooling
+# GitHub Copilot CLI aliases
+if command -v gh &> /dev/null; then
+  alias ??="gh copilot suggest -t shell"
+  alias git?="gh copilot suggest -t git"
+  alias gh?="gh copilot suggest -t gh"
+  alias wtf="gh copilot explain"
+fi
+
+# Gemini CLI aliases (if installed)
+if command -v gemini &> /dev/null; then
+  alias ask="gemini chat"
+fi
