@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-sudo apt install -y stow
+sudo apt-get update && sudo apt-get install -y stow
 stow -t ~ bash tmux
 source ~/.bashrc
 
