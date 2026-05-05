@@ -4,3 +4,5 @@ stow -t ~ bash tmux
 source ~/.bashrc
 
 npm install -g @google/gemini-cli
+sudo mkdir -p /etc/gemini-cli
+sudo stow -t /etc/gemini-cli gemini-cli

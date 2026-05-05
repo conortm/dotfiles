@@ -1,0 +1,37 @@
+{
+  "suggestions": {
+    "copyPaste": "aware",
+    "style": "concise",
+    "contextAwareness": "full_workspace"
+  },
+  "privacy": {
+    "telemetry": "minimal"
+  },
+  "customInstructions": [
+    "I am an engineer comfortable with TypeScript, Javascript, Golang, Python and Google Apps Script.",
+    "I prefer dry, technical explanations over conversational fluff.",
+    "Prioritize security and input validation in all code snippets.",
+    "Assume a CI/CD environment where possible (GitHub Actions)."
+  ],
+  "autoComplete": {
+    "enabled": true,
+    "triggerOnSpecialCharacters": true
+  },
+  "ui": {
+    "footer": {
+      "hideContextPercentage": false,
+      "hideCWD": false
+    },
+    "showMemoryUsage": true,
+    "showModelInfoInChat": true,
+    "loadingPhrases": "tips"
+  },
+  "ide": {
+    "enabled": true
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  }
+}
